@@ -46,7 +46,7 @@ This project is a Phishing Dashboard application built with React and TypeScript
 
 ### Environment Variables
 
-Create a `.env` file in the `front` directory and add the following environment variables:
+Create a `.env` file in the `phishing-managemet-api` directory and add the following environment variables:
 
 ## API management
 ```dotenv
@@ -59,6 +59,8 @@ JWT_SECRET=your_super_secure_jwt_secret_key
 JWT_EXPIRATION=1d
 CORS_ORIGIN=*
 ```
+
+Create a `.env` file in the `phishing-simulator-server` directory and add the following environment variables:
 
 ## Simulation Server
 ```dotenv
@@ -85,9 +87,9 @@ EMAIL_FROM=email_from
 ```
 
 ## Usage
-
-1. Log in to the application.
-2. Use the form to send phishing emails by entering the recipient's email and selecting a template.
-3. Track the status of sent phishing emails in the dashboard.
-4. Log out when done.
+1. open "localhost:8080"
+2. Log in to the application.
+3. Use the form to send phishing emails by entering the recipient's email and selecting a template.
+4. Track the status of sent phishing emails in the dashboard.
+5. Log out when done.
 
