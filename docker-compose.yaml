@@ -1,0 +1,70 @@
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  phishing-management:
+    build:
+      context: ./phishing-management-api
+    container_name: phishing-management-api
+    restart: always
+    depends_on:
+      - mongodb
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      MONGODB_URI: mongodb://mongodb
+      MONGODB_USER: root
+      MONGODB_PASSWORD: example
+      JWT_SECRET: your_super_secure_jwt_secret_key
+      JWT_EXPIRATION: 1d
+      SIMULATION_SERVICE_URL: http://phishing-simulation:3001
+    ports:
+      - "3000:3000"
+
+  phishing-simulation:
+    build:
+      context: ./phishing-simulation-server
+    container_name: phishing-simulation-server
+    restart: always
+    depends_on:
+      - mongodb
+    environment:
+      NODE_ENV: development
+      PORT: 3001
+      BASE_URL: http://localhost:3001
+      MONGODB_URI: mongodb://mongodb
+      MONGODB_DB_NAME: phishing-management
+      MONGODB_USER: root
+      MONGODB_PASS: example
+      SMTP_HOST: smtp.gmail.com
+      SMTP_PORT: 465
+      SMTP_SECURE: false
+      SMTP_USER: blackenedrussian20@gmail.com
+      SMTP_PASSWORD: xqvzodcxjvjlocbs
+      EMAIL_FROM: blackenedrussian20@gmail.com
+    ports:
+      - "3001:3001"
+
+  frontend:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    container_name: react-frontend
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - phishing-management
+      - phishing-simulation
+
+volumes:
+  mongodb_data:

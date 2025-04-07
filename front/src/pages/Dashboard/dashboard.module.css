@@ -1,0 +1,137 @@
+.dashboardContainer {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+.dashboardBox {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  padding: 32px;
+  max-width: 800px;
+  width: 100%;
+  transition: box-shadow 0.3s ease;
+}
+
+.dashboardBox:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.inputContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+  align-items: center;
+}
+
+.inputContainer input,
+.inputContainer select {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.inputContainer input:focus,
+.inputContainer select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.dropdown {
+  background-color: #f9f9f9;
+}
+
+.sendButton {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 18px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.sendButton:hover {
+  background-color: #0056b3;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+
+.table th,
+.table td {
+  border: 1px solid #e0e0e0;
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.table th {
+  background-color: #f0f4f8;
+  color: #333;
+}
+
+.statusClicked {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.statusNotClicked {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.statusFailed {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.logoutButton {
+  background-color: rgb(226, 31, 31);
+  color: white;
+  padding: 10px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.logoutButton:hover {
+  background-color: #c51414;
+}
+
+@media (max-width: 600px) {
+  .inputContainer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sendButton {
+    width: 100%;
+  }
+}
+@media (max-width: 400px) {
+  .inputContainer input,
+  .inputContainer select {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  .sendButton,
+  .logoutButton {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+}
